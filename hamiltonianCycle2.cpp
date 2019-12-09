@@ -3,42 +3,40 @@ using namespace std;
 #define v 5
 
 
-void printSolution(int path[])  
+void printSolution(int color[])  
 {  
     cout << "Solution Exists \n"   ;  
     for (int i = 0; i < v; i++)  
-        cout << path[i] << " ";   
+        cout << color[i] << " ";   
    
-    cout << path[0] << " ";  
+    cout << color[0] << " ";  
     cout << endl; 
 }  
   
   
-bool isSafe(bool graph[v][v],int *path,int vertex,int position){
-	if(graph[path[position-1]][vertex]==0){
-		return false;
-	}
-	for(int i=0;i<position;i++ ){
-		if(path[i]==vertex){
+bool isSafe(bool graph[v][v],int *color,int vertex,int c){
+
+	for(int i=0;i<v;i++ ){
+		if(graph[vertex][i]!=0 and color[i]==c){
 			return false;
 		}
 	}
 	return true;
 }
 
-bool hamiltonianCycleUtility(bool graph[v][v],int *path,int position){
-	if(position==v){		
+bool hamiltonianCycleUtility(bool graph[v][v],int *path,int vertex,int c){
+	if(vertex==v){
 		printSolution(path);			
 		}
 	
 	for(int i=0;i<v;i++){
-		if(isSafe(graph,path,i,position)){
-			path[position]=i;
-			int next = hamiltonianCycleUtility(graph,path,position+1);
+		if(isSafe(graph,path,i,c)){
+			path[vertex]=i;
+			int next = hamiltonianCycleUtility(graph,path,i+1,i+1);
 			if(!next){
 				return false;
 			}
-			path[position] = -1;
+			path[vertex] = -1;
 		}
 	}
 	return true;
@@ -53,10 +51,10 @@ int main(){
     int *path = new int[v];  
     for (int i = 0; i < v; i++)  
         path[i] = -1;  
-   path[0] = 0;  
+  // path[0] = 0;  
   
    
-    hamiltonianCycleUtility(graph1, path,1) ;
+    hamiltonianCycleUtility(graph1, path,0,0) ;
      
   
     
