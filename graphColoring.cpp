@@ -6,6 +6,7 @@ using namespace std;
 template<typename T>
 class Graph{
     map<T,list<T>> edge;
+    int m ;
 public:
     void addEdge(T u,T v,bool isBirectional=true){
         edge[u].push_back(v);
@@ -14,7 +15,6 @@ public:
         }
     }
    bool chooseColor(T node,T v, map<T,int> &color){
-       int m = 0;
        do{
             int flag=0;
             color[v] = (color[v]+1)%(m+1);
@@ -48,6 +48,7 @@ public:
        color[src] = 1;
        int flag = 1;
 
+
        while(!que.empty()){
         T node = que.front();
         que.pop();
@@ -65,6 +66,7 @@ public:
        }
 
        if(flag==1){
+            cout<<m<<endl;
         for(auto a:color){
         cout<<a.first<<"->"<<a.second<<endl;
        }
@@ -75,6 +77,7 @@ public:
 
    }
 	void printGraph(){
+	    cout<<"\n";
 			for(auto i:edge){
 				cout<<i.first<<"->";
 				for(auto j:i.second){
@@ -88,10 +91,19 @@ public:
 };
 int main(){
 	Graph<string> g;
-    g.addEdge("english","programming logic");
-    g.addEdge("english","cpp");
-    g.addEdge("programming logic","cpp");
 
+       g.addEdge("english","programming logic");
+    g.addEdge("maths", "programming logic");
+    g.addEdge("programming logic","html");
+    g.addEdge("programming logic","python");
+    g.addEdge("programming logic","java");
+    g.addEdge("programming logic","js");
+    g.addEdge("python","wd");
+    g.addEdge("html","css");
+    g.addEdge("css","js");
+    g.addEdge("js","wd");
+    g.addEdge("java","wd");
+    g.addEdge("python","wd");
 
 
 
