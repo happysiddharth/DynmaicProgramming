@@ -1,4 +1,4 @@
-longestCommonSubsequence
+
 #include <iostream>
 #include <string.h>
 using namespace std;
@@ -8,7 +8,7 @@ char ans[100][100];
 int longestCommonSubsequence(string x , string y ){
    int m = x.length();
    int n = y.length();
-   int dp[m+2][n+2];
+   int dp[m+1][n+1];
 
    for(int i=0;i<=m;i++){
        dp[i][0]=0;
