@@ -7,7 +7,7 @@ void knapsapProblem(int w[],int cost[],int totalWeight,int n){
 	int ans[n+1][totalWeight+1];
 	for(int i=0;i<=n;i++){
 		ans[i][0]=0;
-	}	
+	}
 	for(int i=0;i<=totalWeight;i++){
 		ans[0][i]=0;
 	}
@@ -20,22 +20,16 @@ void knapsapProblem(int w[],int cost[],int totalWeight,int n){
 			}
 		}
 	}
-	
 
-	
-		for(int i=0;i<=n;i++){		
-	        for(int j=0;j<=totalWeight;j++){
-			
-			   cout<<ans[i][j];
-	    	}
-		cout<<endl;
-	}
-		
+
+
+		cout<<ans[n][totalWeight];
+
 }
 int main(){
-	int w[]={1,3,4,5};
-	int cost[]={1,4,5,7};
-	int weight = 7;
-	knapsapProblem(w,cost,weight,4);
+	int w[]={1 ,2 ,3 ,2 ,2 };
+	int cost[]={8, 4 ,0, 5, 3};
+	int weight = 4;
+	knapsapProblem(w,cost,weight,6);
 	return 0;
 }
